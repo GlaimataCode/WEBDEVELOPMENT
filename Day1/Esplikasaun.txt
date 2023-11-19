@@ -1,0 +1,3 @@
+HTML===> (Kria Parte Por Parte)
+CSS ===> (Styling)
+PHP ===> (Programming Language)
