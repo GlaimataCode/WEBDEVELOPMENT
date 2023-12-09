@@ -1,0 +1,29 @@
+DDL Data definition Language
+DML Data Manipilation Language
+==============================================================================================
+SQL JOIN
+LEFT JOIN
+RIGHT JOIN
+INNER JOIN
+FULL JOIN
+==============================================================================================
+-- 1. hatama dados tabela (insert);
+INSERT INTO t_estudante(naran_estudante, sexo, data_moris, nu_telefone)
+VALUES('Aking Martins', 'Mane', '1993-12-12', '74414630')
+==============================================================================================
+-- 2. Select Data
+-- SELECT * FROM t_estudante
+-- SELECT naran_estudante, sexo FROM t_estudante =select kada koluna
+-- SELECT naran_estudante FROM t_estudante WHERE sexo='Feto'=filtru
+-- SELECT * FROM t_estudante Order by data_moris DESC
+-- SELECT * FROM t_estudante ORDER BY Data_Moris ASC LIMIT 2
+==============================================================================================
+-- SELECT * FROM t_estudante WHERE sexo='Feto' ORDER BY Data_Moris ASC LIMIT 2
+==============================================================================================
+-- UPDATE t_estudante 
+-- SET naran_estudante = 'Mario' 
+-- WHERE id_estudante='32e18e6b-cf2d-40b9-9e2b-eab539a8ea5d'
+==============================================================================================
+DELETE FROM t_estudante
+WHERE id_estudante=''
+==============================================================================================
