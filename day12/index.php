@@ -20,7 +20,7 @@
     <title>CRUD</title>
  </head>
  <body>
-    <?php if(!isset($_GET['insert'])) {?>
+    <?php if(!isset($_GET['insert']) && !isset($_GET['edit'])) {?>
     <h1>Lista Estudante</h1>
     <p><a href="materia.php">Lista Materia</a></p>
     <p><a href="index.php?insert=true">Insert Dadus Estudante</a></p>
@@ -46,7 +46,10 @@
               <td><?=$a['sexo']?></td> 
               <td><?=$a['data_moris']?></td>
               <td><?=$a['nu_telefone']?></td>
-              <td>Edit|Delete</td>
+              <td>
+                <a href="index.php?edit=<?= $a['id_estudante'] ?>">Edit</a>|
+                <a href="index.php?delete=true">Delete</a>
+             </td>
             </tr>
             <?php } ?>
         </tbody>
@@ -87,9 +90,46 @@
             </form>
             <?php
         }
-    
+        if(isset($_GET['edit'])){
+            $id_estudante = $_GET['edit'];
+            $dados_estudante = select_table("t_estudante WHERE id_estudante = '$id_estudante' ");
+            foreach($dados_estudante as $a){
     ?>
-    
+
+    <h2>Updated dadus Estudante</h2>
+    <form action="index.php" method="post">
+        <ul>
+            <li>
+                <label for="naran_estudante">Naran Estudante</label>
+                <input type="text" name="naran_estudante" value="<?=$a['naran_estudante']; ?>">
+            </li>
+            <li>
+                <label for="sexo">Sexo</label>
+                <select name="sexo" id="sexo">
+                    <?php if($a['sexo'] == 'Mane'){
+                        echo '<option value="Mane" selected>Mane</option>
+                        <option value="Feto">Feto</option>';
+                    }else if($a['sexo'] == 'Feto'){
+                        echo '<option value="Mane">Mane</option>
+                        <option value="Feto" selected>Feto</option>';
+                    } ?>
+                </select>
+            </li>
+            <li>
+                <label for="data_moris"></label>
+                <input type="date" name="data_moris" value="<?= $a['data_moris']; ?>">
+            </li>
+            <li>
+                <label for="nu_telefone">Nu Telefone</label>
+                <input type="number" name="nu_telefone" value="<?= $a['nu_telefone'];?>">
+            </li>
+            <li>
+                <button type="submit" name="gravar">Save</button>
+                <button><a href="index.php">Kansela</a></button>
+            </li>
+        </ul>
+    </form>
+    <?php } }?>
  </body>
  </html>
 

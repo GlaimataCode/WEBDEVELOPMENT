@@ -18,7 +18,7 @@
     <title>CRUD</title>
  </head>
  <body>
- <?php if(!isset($_GET['insert'])) {?>
+ <?php if(!isset($_GET['insert']) && !isset($_GET['edit'])) {?>
     <h1>Lista Materia</h1>
     <p><a href="index.php">Lista Estudante</a></p>
     <p><a href="materia.php?insert=true">Insert Dadus Materia</a></p>
@@ -38,7 +38,9 @@
             <tr>
               <td><?=$no++?></td>
               <td><?=$a['materia']?></td>
-              <td>Edit|Delete</td>
+              <td><a href="materia.php?edit=true">Edit</a>|
+                    <a href="materia.php?delete=true">Delete</a>
+              </td>
             </tr>
             <?php } ?>
         </tbody>
@@ -62,9 +64,22 @@
         </form>
         <?php
     }
-
+if(isset($_GET['edit'])){
 ?>
-    
+    <h2>Updated dadus Materia</h2>
+        <form action="materia.php" method="post">
+            <ul>
+                <li>
+                    <label for="materia">Materia</label>
+                    <input type="text" name="materia">
+                </li>
+                <li>
+                    <button type="submit" name="gravar">Save</button>
+                    <button href="materia.php">Kansela</button>
+                </li>
+            </ul>
+        </form>
+        <?php } ?>
  </body>
  </html>
 

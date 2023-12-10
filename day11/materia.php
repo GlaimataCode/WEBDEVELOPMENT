@@ -38,7 +38,9 @@
             <tr>
               <td><?=$no++?></td>
               <td><?=$a['materia']?></td>
-              <td>Edit|Delete</td>
+              <td><a href="materia.php?edit=true">Edit</a>|
+                    <a href="materia.php?delete=true">Delete</a>
+              </td>
             </tr>
             <?php } ?>
         </tbody>
