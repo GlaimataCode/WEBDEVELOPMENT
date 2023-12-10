@@ -11,6 +11,16 @@
         $resultadu = insert_estudante($naran_estudante,$sexo,$data_moris,$nu_telefone);
         header('Location: index.php');
     }
+    if(isset($_POST['edit'])){
+        $id_estudante = $_POST['id_estudante'];
+        $naran_estudante = $_POST['naran_estudante'];
+        $sexo = $_POST['sexo'];
+        $data_moris = $_POST['data_moris'];
+        $nu_telefone = $_POST['nu_telefone'];
+
+        $resultadu = edit_estudante($id_estudante, $naran_estudante,$sexo,$data_moris,$nu_telefone);
+        header('location: index.php');
+    }
  ?>
  <!DOCTYPE html>
  <html lang="en">
@@ -47,7 +57,7 @@
               <td><?=$a['data_moris']?></td>
               <td><?=$a['nu_telefone']?></td>
               <td>
-                <a href="index.php?edit=<?= $a['id_estudante'] ?>">Edit</a>|
+                <a href="index.php?edit=<?= $a['id_estudante'] ?>">Edit</a> |
                 <a href="index.php?delete=true">Delete</a>
              </td>
             </tr>
@@ -98,6 +108,7 @@
 
     <h2>Updated dadus Estudante</h2>
     <form action="index.php" method="post">
+         <input type="text" name="id_estudante" value="<?= $a['id_estudante']?>" hidden>
         <ul>
             <li>
                 <label for="naran_estudante">Naran Estudante</label>
@@ -107,11 +118,11 @@
                 <label for="sexo">Sexo</label>
                 <select name="sexo" id="sexo">
                     <?php if($a['sexo'] == 'Mane'){
-                        echo '<option value="Mane" selected>Mane</option>
-                        <option value="Feto">Feto</option>';
+                        echo "<option value='Mane' selected>Mane</option>
+                        <option value='Feto'>Feto</option>";
                     }else if($a['sexo'] == 'Feto'){
-                        echo '<option value="Mane">Mane</option>
-                        <option value="Feto" selected>Feto</option>';
+                        echo "<option value='Mane'>Mane</option>
+                        <option value='Feto' selected>Feto</option>";
                     } ?>
                 </select>
             </li>
@@ -124,7 +135,7 @@
                 <input type="number" name="nu_telefone" value="<?= $a['nu_telefone'];?>">
             </li>
             <li>
-                <button type="submit" name="gravar">Save</button>
+                <button type="submit" name="edit">Update</button>
                 <button><a href="index.php">Kansela</a></button>
             </li>
         </ul>

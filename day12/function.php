@@ -36,5 +36,15 @@
         $sql = $kon -> prepare($query);
         $sql -> execute();
         }
+        function edit_estudante($id_estudante, $naran_estudante,$sexo,$data_moris,$nu_telefone){
+          global $kon;
+        // Query 
+          $query = "UPDATE t_estudante SET naran_estudante='$naran_estudante', sexo='$sexo', data_moris='$data_moris', nu_telefone='$nu_telefone'
+          WHERE id_estudante='$id_estudante'";
+      
+          //prepare no Executa
+          $sql = $kon -> prepare($query);
+          $sql -> execute();
+          }
 
 ?>
