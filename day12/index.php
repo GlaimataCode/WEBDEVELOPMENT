@@ -21,6 +21,15 @@
         $resultadu = edit_estudante($id_estudante, $naran_estudante,$sexo,$data_moris,$nu_telefone);
         header('location: index.php');
     }
+    if(isset($_GET['delete_id'])){
+        $naran_tabela ='t_estudante';
+        $p_key = 'id_estudante';
+        $value = $_GET['delete_id'];
+
+        $resultadu = delete($naran_tabela,$p_key,$value);
+            header('location: index.php');
+    }
+    $dados = select_table('t_estudante ORDER BY naran_estudante ASC');
  ?>
  <!DOCTYPE html>
  <html lang="en">
@@ -58,7 +67,7 @@
               <td><?=$a['nu_telefone']?></td>
               <td>
                 <a href="index.php?edit=<?= $a['id_estudante'] ?>">Edit</a> |
-                <a href="index.php?delete=true">Delete</a>
+                <a href="index.php?delete_id=<?= $a['id_estudante'] ?>">Delete</a>
              </td>
             </tr>
             <?php } ?>

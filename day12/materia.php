@@ -1,7 +1,7 @@
  <?php
     include("function.php");
     $dados = select_table('t_materia');
-    
+    //input materia
     if(isset($_POST['gravar'])){
         if(!empty($_POST['materia'])){
             $materia = $_POST['materia'];
@@ -9,6 +9,26 @@
             header('Location: materia.php');
     }
 }
+
+//Edit Materia
+if(isset($_POST['edit'])){
+    $id_materia = $_POST['id_materia'];
+    $materia = $_POST['materia'];
+
+    $resultadu = edit_materia($id_materia, $materia);
+    header('location: materia.php');
+}
+
+//delete materia
+if(isset($_GET['delete_id'])){
+    $naran_tabela ='t_materia';
+    $p_key = 'id_materia';
+    $value = $_GET['delete_id'];
+
+    $resultadu = delete_materia($naran_tabela,$p_key,$value);
+        header('location: materia.php');
+}
+    $dados = select_table('t_materia ORDER BY materia ASC');
  ?>
  <!DOCTYPE html>
  <html lang="en">
@@ -38,8 +58,8 @@
             <tr>
               <td><?=$no++?></td>
               <td><?=$a['materia']?></td>
-              <td><a href="materia.php?edit=true">Edit</a>|
-                    <a href="materia.php?delete=true">Delete</a>
+              <td><a href="materia.php?edit=<?= $a['id_materia'] ?>">Edit</a> |
+                <a href="materia.php?delete_id=<?= $a['id_materia'] ?>">Delete</a>
               </td>
             </tr>
             <?php } ?>
@@ -65,21 +85,25 @@
         <?php
     }
 if(isset($_GET['edit'])){
+    $id_materia = $_GET['edit'];
+            $dados_materia = select_table("t_materia WHERE id_materia = '$id_materia' ");
+            foreach($dados_materia as $a){
 ?>
     <h2>Updated dadus Materia</h2>
         <form action="materia.php" method="post">
+        <input type="text" name="id_materia" value="<?= $a['id_materia']?>" hidden>
             <ul>
                 <li>
                     <label for="materia">Materia</label>
-                    <input type="text" name="materia">
+                    <input type="text" name="materia" value="<?=$a['materia']; ?>">
                 </li>
                 <li>
-                    <button type="submit" name="gravar">Save</button>
+                    <button type="submit" name="edit">Update</button>
                     <button href="materia.php">Kansela</button>
                 </li>
             </ul>
         </form>
-        <?php } ?>
+        <?php } } ?>
  </body>
  </html>
 
