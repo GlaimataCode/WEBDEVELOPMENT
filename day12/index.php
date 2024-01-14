@@ -37,13 +37,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CRUD</title>
+    <link rel="stylesheet" href="bootstrap-5.0.2-dist/css/bootstrap.min.css">
  </head>
  <body>
+    <div class="container">
+        <h1>BEMVINDU</h1>
+        <ul class="nav nav-pills">
+            <li class="nav-item">
+                <a class="nav-link active" href="index.php">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="materia.php">Materia</a>
+            </li>
+        </ul>
     <?php if(!isset($_GET['insert']) && !isset($_GET['edit'])) {?>
-    <h1>Lista Estudante</h1>
-    <p><a href="materia.php">Lista Materia</a></p>
-    <p><a href="index.php?insert=true">Insert Dadus Estudante</a></p>
-    <table border="1">
+        <div class="alert alert-info d-flex mt-2">
+            <h1>Lista Estudante</h1>
+            <div class="ms-auto">
+            <a class="btn btn-primary" href="index.php?insert=true">Insert</a></a>
+        </div>
+        </div>
+
+    <table class="table table-bordered table-hover">
         <thead>
             <tr>
                 <th>NO</th>
@@ -66,8 +81,8 @@
               <td><?=$a['data_moris']?></td>
               <td><?=$a['nu_telefone']?></td>
               <td>
-                <a href="index.php?edit=<?= $a['id_estudante'] ?>">Edit</a> |
-                <a href="index.php?delete_id=<?= $a['id_estudante'] ?>">Delete</a>
+                <a class="btn btn-warning" href="index.php?edit=<?= $a['id_estudante'] ?>">Edit</a> |
+                <a class="btn btn-danger" href="index.php?delete_id=<?= $a['id_estudante'] ?>">Delete</a>
              </td>
             </tr>
             <?php } ?>
@@ -78,7 +93,10 @@
     }
         if(isset($_GET['insert']) && $_GET['insert'] == 'true'){
             ?>
+            <div class="alert alert-info d-flex mt-2">
             <h2>insert dadus Estudante</h2>
+            </div>
+            
             <form action="index.php" method="post">
                 <ul>
                     <li>
@@ -114,8 +132,10 @@
             $dados_estudante = select_table("t_estudante WHERE id_estudante = '$id_estudante' ");
             foreach($dados_estudante as $a){
     ?>
-
+    <div class="alert alert-info d-flex mt-2">
     <h2>Updated dadus Estudante</h2>
+    </div>
+  
     <form action="index.php" method="post">
          <input type="text" name="id_estudante" value="<?= $a['id_estudante']?>" hidden>
         <ul>
@@ -150,6 +170,7 @@
         </ul>
     </form>
     <?php } }?>
- </body>
+    </div> 
+</body>
  </html>
 
