@@ -49,6 +49,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="materia.php">Materia</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="logout.php">Logout</a>
+            </li>
         </ul>
     <?php if(!isset($_GET['insert']) && !isset($_GET['edit'])) {?>
         <div class="alert alert-info d-flex mt-2">
