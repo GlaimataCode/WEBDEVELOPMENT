@@ -12,7 +12,7 @@ if (isset($_POST['insert'])) {
     header('Location: aula.php');
 }
 
-if (isset($_POST['edita'])) {
+if (isset($_POST['edit_aula'])) {
     $id_aula = $_POST['id_aula'];
     $id_estudante = $_POST['id_estudante'];
     $id_materia = $_POST['id_materia'];
@@ -55,7 +55,7 @@ $dados = select_table('v_estudante_materia ORDER BY naran_estudante ASC');
                     <td>Naran</td>
                     <td>Sexo</td>
                     <td>Materia</td>
-                        <td>Asaun</td>
+                    <td>Asaun</td>
                 </thead>
                 <tbody>
                     <?php
@@ -94,7 +94,7 @@ $dados = select_table('v_estudante_materia ORDER BY naran_estudante ASC');
                         <select name="id_estudante" id="naran_estudante">
                             <option value="" selected hidden>- Hili estudante -</option>
                             <?php
-                            $estudante = sel_table('t_estudante order by naran_estudante');
+                            $estudante = select_table('t_estudante order by naran_estudante');
                             foreach ($estudante as $a) { ?>
                                 <option value="<?= $a['id_estudante']; ?>"><?= $a['naran_estudante']; ?></option>
                             <?php } ?>
@@ -105,7 +105,7 @@ $dados = select_table('v_estudante_materia ORDER BY naran_estudante ASC');
                         <select name="id_materia" id="id_materia">
                             <option value="" selected hidden>- Hili Materia -</option>
                             <?php
-                            $materia = sel_table('t_materia order by materia');
+                            $materia = select_table('t_materia order by materia');
                             foreach ($materia as $a) {
                             ?>
                                 <option value="<?= $a['id_materia']; ?>"><?= $a['materia']; ?></option>
@@ -124,7 +124,7 @@ $dados = select_table('v_estudante_materia ORDER BY naran_estudante ASC');
         if (isset($_GET['edit']) && !empty($_GET['edit']) && $admin == 'admin') {
 
             $id_aula = $_GET['edit'];
-            $dados_aula = sel_table("t_aula where id_aula='$id_aula'");
+            $dados_aula = select_table("t_aula where id_aula='$id_aula'");
             foreach ($dados_aula as $b) {
             ?>
                 <h1>Edit Estudante nia materia</h1>
@@ -137,7 +137,7 @@ $dados = select_table('v_estudante_materia ORDER BY naran_estudante ASC');
                             <select name="id_estudante" id="naran_estudante">
                                 <option value="" selected hidden>- Hili estudante -</option>
                                 <?php
-                                $estudante = sel_table('t_estudante order by naran_estudante');
+                                $estudante = select_table('t_estudante order by naran_estudante');
                                 foreach ($estudante as $a) {
 
                                     if ($a['id_estudante'] == $b['id_estudante']) {
@@ -153,7 +153,7 @@ $dados = select_table('v_estudante_materia ORDER BY naran_estudante ASC');
                             <select name="id_materia" id="id_materia">
                                 <option value="" selected hidden>- Hili Materia -</option>
                                 <?php
-                                $materia = sel_table('t_materia order by materia');
+                                $materia = select_table('t_materia order by materia');
                                 foreach ($materia as $a) {
                                     if ($a['id_materia'] == $b['id_materia']) {
                                         echo "<option value=" . $a['id_materia'] . " selected>" . $a['materia'] . "</option>";
