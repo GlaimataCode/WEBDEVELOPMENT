@@ -48,9 +48,9 @@ if(isset($_GET['delete_id'])){
     <table id="dt_materia" class="table table-bordered table-hover">
         <thead>
             <tr>
-                <th>NO</th>
-                <th>MATERIA</th>
-                <th>ASAUN</th>
+                <th width="10">NO</th>
+                <th width="50">MATERIA</th>
+                <th width="30">ASAUN</th>
             </tr>
         </thead>
         <tbody>

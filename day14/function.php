@@ -101,4 +101,43 @@ function edit_materia($id_materia, $materia){
   $sql = $kon -> prepare($query);
   $sql -> execute();
   }
+
+  //tabela statistik
+  function table($query)
+{
+    global $kon;
+    $sql = "$query";
+    $dados = $kon->prepare($sql);
+    $dados->execute();
+    return $dados->fetchAll(PDO::FETCH_ASSOC);
+}
+function aula_table($naran_table)
+{
+    global $kon;
+    $sql = "SELECT * FROM $naran_table";
+    $dados = $kon->prepare($sql);
+    $dados->execute();
+    return $dados->fetchAll(PDO::FETCH_ASSOC);
+}
+function insert_aula($id_estudante, $id_materia)
+{
+    global $kon;
+    $sql = "INSERT INTO t_aula(id_estudante, id_materia) VALUES('$id_estudante', '$id_materia')";
+    $dados = $kon->prepare($sql);
+    $dados->execute();
+}
+
+function edit_aula($id_aula, $id_estudante, $id_materia)
+{
+    global $kon;
+    $sql = "UPDATE t_aula SET id_estudante='$id_estudante', id_materia='$id_materia' WHERE id_aula='$id_aula'";
+    $dados = $kon->prepare($sql);
+    $dados->execute();
+}
+function delete_aula($naran_tabela,$p_key,$value){
+  global $kon;
+      $sql = "DELETE FROM $naran_tabela WHERE $p_key = '$value'";
+      $dados = $kon->prepare($sql);
+      $dados->execute();
+}
 ?>

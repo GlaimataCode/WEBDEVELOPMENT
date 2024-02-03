@@ -13,7 +13,13 @@
                 <a class="nav-link <?= $url == 'materia.php' ? 'active' : '' ?>" href="materia.php">Materia</a>
             </li>
             <li class="nav-item">
+                <a class="nav-link <?= $url == 'aula.php' ? 'active' : '' ?>" href="aula.php">Aula</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link <?= $url == 'utilizador.php' ? 'active' : '' ?>" href="utilizador.php">Utilizador</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link <?= $url == 'statistik.php' ? 'active' : '' ?>" href="statistik.php">Statistika</a>
             </li>
             <li class="nav-item dropdown ms-auto d-flex">
                 <a class="nav-link dropdown-toggle <?= $url == 'profile.php.php' ? 'active' : '' ?>" data-bs-toggle="dropdown" href="#">Profile</a>
