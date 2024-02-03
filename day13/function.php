@@ -15,11 +15,11 @@
     return $resultado;
     }
 //function insert estudante
-    function insert_estudante($naran_estudante,$sexo,$data_moris,$nu_telefone){
+    function insert_estudante($naran_estudante,$sexo,$data_moris,$nu_telefone, $emis){
       global $kon;
     // Query 
-      $query = "INSERT INTO t_estudante(naran_estudante, sexo, data_moris, nu_telefone)
-      VALUES('$naran_estudante','$sexo','$data_moris','$nu_telefone')";
+      $query = "INSERT INTO t_estudante(naran_estudante, sexo, data_moris, nu_telefone, emis)
+      VALUES('$naran_estudante','$sexo','$data_moris','$nu_telefone', '$emis')";
   
       //prepare no Executa
       $sql = $kon -> prepare($query);
@@ -39,10 +39,10 @@
         }
 
         //function edit estudante
-        function edit_estudante($id_estudante, $naran_estudante,$sexo,$data_moris,$nu_telefone){
+        function edit_estudante($id_estudante, $naran_estudante,$sexo,$data_moris,$nu_telefone, $emis){
           global $kon;
         // Query 
-          $query = "UPDATE t_estudante SET naran_estudante='$naran_estudante', sexo='$sexo', data_moris='$data_moris', nu_telefone='$nu_telefone'
+          $query = "UPDATE t_estudante SET naran_estudante='$naran_estudante', sexo='$sexo', data_moris='$data_moris', nu_telefone='$nu_telefone', emis='$emis'
           WHERE id_estudante='$id_estudante'";
       
           //prepare no Executa
@@ -78,4 +78,27 @@ function edit_materia($id_materia, $materia){
       $dados->execute();
   }
 
+
+  //function utilizador
+  function insert_utilizador($id_estudante, $password, $user_level){
+
+  global $kon;
+      // Query 
+        $query = "INSERT INTO t_utilizador(id_estudante,password, user_level)
+        VALUES('$id_estudante', '$password', '$user_level')";
+    
+        //prepare no Executa
+        $sql = $kon -> prepare($query);
+        $sql -> execute();
+  }
+ function edit_utilizador($id, $id_estudante, $password, $user_level){
+  global $kon;
+// Query 
+  $query = "UPDATE t_utilizador SET id_estudante='$id_estudante', password='$password', user_level='$user_level'
+  WHERE id_utilizador='$id' ";
+
+  //prepare no Executa
+  $sql = $kon -> prepare($query);
+  $sql -> execute();
+  }
 ?>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Login | USERS</title>
     <link rel="stylesheet" href="bootstrap-5.0.2-dist/css/bootstrap.min.css">
 </head>
 <body>
@@ -15,7 +15,7 @@
         <div class="row justify-content-center text-center m-5">
              <div class="col-md-4 border" style="background-color:azure;"> <!--bele aumenta css tuir nesesidade presiza -->
 
-                <h3>Formulariu Login</h3>
+                <h3 class="mt-4">Formulariu Login</h3>
                 <hr>
 
                <form action="login_control.php" method="post">

@@ -1,80 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page</title>
-
-    <!-- Bootstrap CSS -->
+    <title>Login | USERS</title>
     <link rel="stylesheet" href="bootstrap-5.0.2-dist/css/bootstrap.min.css">
 </head>
-
 <body>
-
-    <div class="container-fluit p-5 bg-primary text-white text-center">
-        <h1>SISTEMA GESTAUN DADUS ESKOLA</h1>
-        <p>Sistema nebe halo Jestaun ba dadus Estudante ETI-DILI!</p>
+    <div class="container-fluid bg-primary text-white text-center p-5">
+        <h1>SISTEMA INFORMASAUN ESKOLA</h1>
+        <p>Sistema Jere Dadus Estudante hotu iha Eskola ETI-DILI</p>
     </div>
+    <div class="container">
+        <div class="row justify-content-center text-center m-5">
+             <div class="col-md-4 border" style="background-color:azure;"> <!--bele aumenta css tuir nesesidade presiza -->
 
-    <div class="container p-5 text-center">
-        <form action="login_control.php" method="post">
-            <div class="row justify-content-center">
-                <div class="col-lg-4 border p-5" style="background-color: #f5f5f0;">
-                    <h3>Form Login</h3>
-                    <hr>
-                    <div class="mb-3 mt-3">
+                <h3 class="mt-4">Formulariu Login</h3>
+                <hr>
+
+               <form action="login_control.php" method="post">
+                    <div class="m-3">
                         <label for="username" class="form-label">Username:</label>
-                        <input type="text" name="username" id="username" class="form-control" placeholder="- hatama Username -">
+                        <input type="text" class="form-control" name="username" id="username" placeholder="Hatama Username">
                     </div>
-                    <div class="mb-3 mt-3">
+                    <div class="m-3">
                         <label for="password" class="form-label">Password:</label>
-                        <input type="password" name="password" id="password" class="form-control" placeholder="- hatama Password -">
+                        <input type="text" class="form-control" name="password" id="password" placeholder="hatama Password">
                     </div>
-                    <button type="submit" class="btn btn-primary" name="login">Login</button>
-                    <div class="text-danger pt-3">
+                    <div>
                         <?php
-                        if (isset($_GET['err'])) {
-                            $err = $_GET['err'];
-                            switch ($err) {
-                                case '1':
-                                    echo 'Hatama Username!';
+                        if(isset($_GET['err'])){
+                                $err = $_GET['err'];
+                                echo '<i class="text-danger">';
+                                switch($err){
+                                    case'1';
+                                    echo 'Username Mamuk Hela!';
                                     break;
-                                case '2':
-                                    echo 'Hatama Password!';
+                                    case'2';
+                                    echo 'Password Mamuk Hela!';
                                     break;
-                                case '3':
-                                    echo 'Hatama Username no Password!';
+                                    case'3';
+                                    echo 'Username no Password Mamuk Hela!';
                                     break;
-                                case '4':
-                                    echo 'Username ka Password sala hela!';
+                                    case'4';
+                                    echo 'Username ou Password Sala Hela!';
                                     break;
-                                default:
-                                    echo '';
-                                    break;
-                            }
+                                }
+                                echo '</i>';
                         }
                         ?>
                     </div>
-                </div>
+                    <div class="m-3">
+                        <button class="btn btn-primary" type="submit" name="login">Login</button>
+                    </div>
+               </form>
             </div>
-        </form>
+        </div>
     </div>
-
-    <!-- footer.php -->
-    <footer class="bg-light text-center py-3 fixed-bottom">
-        <marquee behavior="alternative">
-            <p class="mb-0">&copy; <?= date("Y"); ?> Naran Sistema. All Rights Reserved.</p>
-        </marquee>
+    <footer class="bg-secondary text-white p-1 fixed-botton text-center">
+        <p>&copy;SIE @<?= date('Y')?> | ETI-DILI</p>
     </footer>
-
-
-    <!-- Bootstrap JavaScript -->
-    <script src="bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Bootstrap Popper -->
-    <script src="bootstrap-5.0.2-dist/js/popper.min.js"></script>
-
 </body>
-
 </html>
