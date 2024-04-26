@@ -13,7 +13,14 @@
             include('menu.php');
         ?>
 
-    <h3 class="bg-success p-4 text-white">My Profile</h3>
+    <h3 class="bg-success text-white p-4 d-flex">
+        <div>
+            My Profile
+        </div>
+        <div class="ms-auto">
+            <a href="relatoriu/kartaun.php?id=<?= $id_estudante; ?>" target="_blank" class="btn btn-light">Kartaun</a>
+        </div>
+    </h3>
     <?php 
         foreach ($dados as $a) {?>
         <div class="row">

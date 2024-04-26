@@ -45,6 +45,7 @@
             <h1>Lista Estudante</h1>
         <div class="ms-auto">
             <a class="btn btn-success" href="relatoriu/r_estudante.php" target="_blank">Relatoriu</a>
+            <a class="btn btn-success" href="relatoriu/kartaun.php" target="_blank">Kartaun</a>
             <a class="btn btn-primary" href="index.php?insert=true">Insert</a></a>
         </div>
         </div>

@@ -67,8 +67,8 @@ $dados = select_table('v_estudante_materia ORDER BY naran_estudante ASC');
                             <td><?= $a['sexo']; ?></td>
                             <td><?= $a['materia']; ?></td>
                                 <td>
-                                    <a class="btn btn-warning" href="aula.php?edita=<?= $a['id_aula']; ?>">Edit</a>
-                                    <a class="btn btn-danger" href="aula.php?deletea=<?= $a['id_aula']; ?>">Delete</a>
+                                    <a class="btn btn-warning" href="aula.php?edita=<?= $a['id_estudante']; ?>">Edit</a>
+                                    <a class="btn btn-danger" href="aula.php?deletea=<?= $a['id_estudante']; ?>">Delete</a>
                                 </td>
                         </tr>
                     <?php
@@ -79,7 +79,7 @@ $dados = select_table('v_estudante_materia ORDER BY naran_estudante ASC');
 
         <?php }
 
-        if (isset($_GET['insert']) && $_GET['insert'] == 'true' && $admin == 'admin') { ?>
+        if (isset($_GET['insert']) && $_GET['insert']) { ?>
 
             <div class="alert alert-info d-flex m-2">
                 <div>
@@ -88,10 +88,9 @@ $dados = select_table('v_estudante_materia ORDER BY naran_estudante ASC');
             </div>
 
             <form action="aula.php" method="post">
-                <ul>
-                    <li>
-                        <label for="naran_estudante">Naran Estudante:</label>
-                        <select name="id_estudante" id="naran_estudante">
+                     <div class="col-md-3">
+                        <label for="naran_estudante" class="form-label" >Naran Estudante:</label>
+                        <select name="id_estudante" class="form-control" id="naran_estudante">
                             <option value="" selected hidden>- Hili estudante -</option>
                             <?php
                             $estudante = select_table('t_estudante order by naran_estudante');
@@ -99,10 +98,10 @@ $dados = select_table('v_estudante_materia ORDER BY naran_estudante ASC');
                                 <option value="<?= $a['id_estudante']; ?>"><?= $a['naran_estudante']; ?></option>
                             <?php } ?>
                         </select>
-                    </li>
-                    <li>
-                        <label for="id_materia">Materia:</label>
-                        <select name="id_materia" id="id_materia">
+                     </div>
+                     <div class="col-md-3">
+                        <label for="id_materia" class="form-label" >Materia:</label>
+                        <select name="id_materia" class="form-control" id="id_materia">
                             <option value="" selected hidden>- Hili Materia -</option>
                             <?php
                             $materia = select_table('t_materia order by materia');
@@ -111,17 +110,16 @@ $dados = select_table('v_estudante_materia ORDER BY naran_estudante ASC');
                                 <option value="<?= $a['id_materia']; ?>"><?= $a['materia']; ?></option>
                             <?php } ?>
                         </select>
-                    </li>
-                    <li>
-                        <button type="submit" name="insert">save</button>
-                        <button><a href="aula.php">Kansela</a></button>
-                    </li>
-                </ul>
+                     </div>
+                    <div class="col-md-3 p-1">
+                        <button class="btn btn-primary" type="submit" name="insert">save</button>
+                        <button class="btn btn-danger" href="aula.php">Kansela</button>
+                 </div>
 
             </form>
 
             <?php }
-        if (isset($_GET['edit']) && !empty($_GET['edit']) && $admin == 'admin') {
+        if (isset($_GET['edit']) && !empty($_GET['edita'])) {
 
             $id_aula = $_GET['edit'];
             $dados_aula = select_table("t_aula where id_aula='$id_aula'");
@@ -164,8 +162,8 @@ $dados = select_table('v_estudante_materia ORDER BY naran_estudante ASC');
                             </select>
                         </li>
                         <li>
-                            <button type="submit" name="edit_aula">save</button>
-                            <button><a href="aula.php">Kansela</a></button>
+                            <button class="btn btn-warning" type="submit" name="edit_aula">save</button>
+                            <button class="btn btn-danger" href="aula.php">Kansela</button>
                         </li>
                     </ul>
 
